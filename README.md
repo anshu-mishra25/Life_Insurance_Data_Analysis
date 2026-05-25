@@ -1,6 +1,6 @@
 # Indian Life Insurance Sector Analysis
 
-An end-to-end data project analysing the Indian life insurance industry using publicly available data from the **Insurance Regulatory and Development Authority of India (IRDAI)**.
+An end-to-end data project analysing the Indian life insurance industry using publicly available data **Handbook on Indian Insurance Statistics 2024-25** from the **Insurance Regulatory and Development Authority of India (IRDAI)**.
 
 ## Project Overview
 
@@ -14,7 +14,7 @@ This project takes raw IRDAI data across four separate datasets, cleans and stan
 
 ## Data Source
 
-*Handbook on Indian Insurance Statistics 2024-25*, published by IRDAI.  
+*[Handbook on Indian Insurance Statistics 2024-25](https://irdai.gov.in/handbook-of-indian-insurance?p_p_id=com_irdai_document_media_IRDAIDocumentMediaPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_irdai_document_media_IRDAIDocumentMediaPortlet_cur=2&_com_irdai_document_media_IRDAIDocumentMediaPortlet_delta=8&_com_irdai_document_media_IRDAIDocumentMediaPortlet_orderByCol=title&_com_irdai_document_media_IRDAIDocumentMediaPortlet_orderByType=asc)*, published by IRDAI.  
 All four datasets were extracted directly from the official IRDAI publication.
 
 | Dataset | Coverage |
@@ -25,8 +25,9 @@ All four datasets were extracted directly from the official IRDAI publication.
 | AUM | 2021-22 to 2023-24 |
 
 ## The Data Problem
+There were in total 27 Life Insurers but some some insurers like Reliance Nippon - which is fairly new; Max Life Insurance - which got merged with Axis, etc., I picked 22 fully defined with all avaiable data sets insureres, and only then I was able to make dashboard without any kind of hassle.
 
-Each dataset used different naming conventions for the same 22 insurers — ranging from full legal names like *"ICICI Prudential Life Insurance Company Ltd."* to short forms like *"ICICI Prudential"*, with inconsistent spacing, capitalisation and spelling across files. Four insurers present in some datasets but absent from claims data were excluded to maintain consistency.
+Each dataset used different naming conventions for the same 22 insurers — ranging from full legal names like *"ICICI Prudential Life Insurance Company Ltd."* to short forms like *"ICICI Prudential"*, with inconsistent spacing, capitalisation and spelling across files. 
 
 The cleaning process involved building named vector maps in R to standardise all insurer names to a single canonical form, assigning each insurer a numeric code (101–122) used as a foreign key to connect all tables.
 
@@ -44,19 +45,17 @@ The cleaning process involved building named vector maps in R to standardise all
 ## Repository Structure
 
 ```
-irdai-insurance-analysis/
+Life_Insurance_Data_Analysis/
 │
 ├── data/
 │   └── raw/                  ← original CSVs from IRDAI handbook
 │
-├── R/
-│   ├── irdai_clean.R         ← data cleaning and DuckDB setup
-│   └── irdai_queries.R       ← SQL queries via dbGetQuery()
+├── insurance_data_analysis.R         ← data cleaning and DuckDB setup
+├── SQL_Queries_for_Dashboard.R       ← SQL queries via dbGetQuery()
 │
 ├── exports/                  ← cleaned CSVs exported for PowerBI
 │
-├── dashboard/
-│   └── insurance_analysis.pbix
+├── insurance_analysis.pbix
 │
 └── README.md
 ```
